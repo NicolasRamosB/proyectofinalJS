@@ -30,7 +30,7 @@
                 background-color: rgb(243, 71, 71);
 
                 div {
-                    margin: 100px 40px;
+                    margin: 100px 30px;
                     color: rgb(255, 255, 255);
                     transition: all 500ms;
 
@@ -127,7 +127,7 @@
     }
 }
 
-// Responsive
+// Responsive login
 @media screen and (max-width: 850px) {
     .main__login {
         margin-top: 50px;
@@ -154,6 +154,8 @@
         }
     }
 }
+
+// INDEX PRODUCTOS
     .header_index {
         height: 20vh;
 
