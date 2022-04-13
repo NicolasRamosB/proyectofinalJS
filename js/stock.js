@@ -45,5 +45,5 @@ const productos = [
     }
     
 ];
-export {productos}
+export {productos};
 

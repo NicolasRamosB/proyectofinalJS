@@ -78,7 +78,7 @@
     position: relative;
     top: -185px;
     left: 10px;
-    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275 );
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
     form {
         width: 100%;
@@ -137,57 +137,178 @@
             height: 300px;
             flex-direction: column;
             margin: auto;
-            div{
+
+            div {
                 margin: 0px;
-                position:absolute;
+                position: absolute;
             }
         }
     }
 
     // Form
-    .contenedor__login-register{
+    .contenedor__login-register {
         top: -10px;
         left: -5px;
         margin: auto;
-        form{
-            position:relative;
+
+        form {
+            position: relative;
         }
     }
 }
 
 // INDEX PRODUCTOS
-    .header_index {
-        height: 20vh;
+.header__index {
+    height: 20vh;
 
-        .header_title {
-            background-color: rgb(175, 51, 51);
+    .header__title {
+        background-color: rgba(161, 193, 201, 0.699);
+        padding: 40px;
+    }
+}
+
+main {
+    width: 100%;
+}
+
+.cards {
+
+    #card-group {
+        display: flex;
+
+        .card {
+            margin: 20px;
 
         }
     }
+}
 
-    main {
-        
-        width: 100%;
+#cesta__carrito {
+    border: none;
+    color: rgb(65, 225, 225);
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+    transition: all .3s;
+
+    #contador-carrito {
+        font-size: 20px;
+        margin: 10px;
     }
+}
 
-    .cards {
+#cesta__carrito:hover {
+    cursor: pointer;
+    color: rgb(38, 145, 145);
 
-        #card-group {
-            display: flex;
-            
-            .card {
-                margin: 20px;
-                
-            }
-        }
-    }
+}
 
-    #carrito {
-        border: 1px solid;
-        border-color: red;
-    }
+#cesta__carrito:focus {
+    outline: none;
+}
 
-    footer {
-        width: 100%;
-        background-color: rgb(68, 62, 62);
-    }
+
+
+footer {
+    width: 100%;
+    background-color: rgb(68, 62, 62);
+}
+
+// MODAL CARRITO
+
+
+.modal__contenedor {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal__active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 5;
+  }
+  
+  .modal__carrito {
+    position: relative;
+    background-color: white;
+    min-width: 500px;
+    padding: 20px;
+    margin-top: -100%;
+    transition: all .5s;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+
+    h3 {
+        color: rgb(225, 76, 65);
+        padding-bottom: 5px;
+      }
+      #btn-cerrar-carrito {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+        color: rgb(225, 76, 65) !important;
+        border: none;
+        background-color: white;
+      }
+      #btn-cerrar-carrito:hover {
+        cursor: pointer;
+      }
+
+      #btn-cerrar-carrito:focus {
+        outline: none;
+      }
+      .producto-precio {
+        padding-top: 10px;
+      }
+
+      .card .card-image .card-title {
+        color: rgb(225, 76, 65);
+        position: unset
+      }
+
+      .productoEnCarrito {
+        border-left: 5px solid lightblue;
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+        margin: 5px 0;
+        padding: 5px 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .productoEnCarrito:hover {
+        border-left: 5px solid rgb(225, 76, 65);
+      }
+
+      .boton-eliminar {
+        background-color: white;
+        color: red;
+        border: none;
+        font-size: 20px;
+      }
+      
+      .boton-eliminar:hover {
+        cursor: pointer;
+      }
+      
+      .boton-eliminar:focus {
+        outline: none;
+      }
+      
+      
+  }
+  
+  .modal__active .modal__carrito {
+    margin-top: 0;
+  }
+  
+  
