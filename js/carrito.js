@@ -1,57 +1,117 @@
 import { actualizarCarrito } from "/js/actualizarCarrito.js";
 import { productos } from "/js/stock.js";
 
+// Const del Id producto en el modal.
+const contenedorCarrito = document.getElementById('carrito__contenedor');
+// Array de productos al evento click en sumar producto al carrito.
 let carritoDeCompras = [];
 
+
+
+
 export const carrito = (productoId) => {
+    // Llamo del localStorage los productos guardados 
+    if (localStorage.getItem("carrito")) {
+        carritoDeCompras = JSON.parse(localStorage.getItem("carrito"));
+    }
 
-    const contenedorCarrito = document.getElementById('carrito__contenedor');
     let productoRepetido = carritoDeCompras.find(producto => producto.id == productoId);
+    contarProductosRepetidos(productoRepetido, productoId);
+    eliminarProductoCarrito(productoId);
 
-    const renderProductosCarrito = () => {
-
-        let producto = productos.find(producto => producto.id == productoId);
+}
 
 
-        carritoDeCompras.push(producto);
 
-        producto.cantidad = 1;
 
-        let div = document.createElement('div');
+// Logica de Producto en el Modal
+const renderProductosCarrito = (productoId) => {
 
-        div.classList.add('productoEnCarrito');
+    // Trae el producto del objeto lit de Productos.
+    let producto = productos.find(producto => producto.id == productoId);
+    // Push al Array
+    carritoDeCompras.push(producto);
+    // Identificacion cantidad 1
+    producto.cantidad = 1;
 
-        div.innerHTML = `<p>${producto.nombre}</p>
+    // DOM del producto en el modal_active.
+    // Creo la etiqueta
+    let div = document.createElement('div');
+    // Adiero la clase
+    div.classList.add('productoEnCarrito');
+    // Creo las etiquetas en el HTML
+    div.innerHTML = `<p>${producto.nombre}</p>
         <p>Precio: ${producto.precio}</p>
         <p id="cantidad${producto.id}">Cantidad: ${producto.cantidad}</p>
         <button id="eliminar${producto.id}" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>`;
+    //Las adiero como hijos. 
+    contenedorCarrito.appendChild(div);
 
-        contenedorCarrito.appendChild(div);
-        actualizarCarrito(carritoDeCompras);
-    }
+    // Llamo la funcion contador del producto (precio x cantidad) y localStorage setItem.
+    actualizarCarrito(carritoDeCompras);
 
-
-    const contarProductosRepetidos = (prodRepetido) => {
-
-        if (prodRepetido) {
-            prodRepetido.cantidad++
-            document.getElementById(`cantidad${prodRepetido.id}`).innerHTML = `<p id=cantidad${prodRepetido.id}>Cantidad:${prodRepetido.cantidad}</p>`;
-            actualizarCarrito(carritoDeCompras);
-        } else {
-            renderProductosCarrito(productoId);
-        }
-    }
-
-    const eliminarProductoCarrito = (productoId) => {
-        let botonEliminar = document.getElementById(`eliminar${productoId}`);
-
-        botonEliminar.addEventListener('click', () => {
-            botonEliminar.parentElement.remove();
-            carritoDeCompras = carritoDeCompras.filter(el => el.id != productoId);
-            actualizarCarrito(carritoDeCompras);
-        });
-    }
-
-    contarProductosRepetidos(productoRepetido);
-    eliminarProductoCarrito(productoId);
 }
+
+
+
+
+// Repetidor de cantidad del producto en el modal.
+const contarProductosRepetidos = (prodRepetido, productoId) => {
+    if (prodRepetido) {
+        prodRepetido.cantidad++
+        document.getElementById(`cantidad${prodRepetido.id}`).innerHTML = `<p id=cantidad${prodRepetido.id}>Cantidad:${prodRepetido.cantidad}</p>`;
+        actualizarCarrito(carritoDeCompras);
+    } else {
+        renderProductosCarrito(productoId);
+    }
+}
+
+
+
+// logica y Evento de eliminar producto en el modal.
+const eliminarProductoCarrito = (productoId) => {
+
+    if (localStorage.getItem("carrito")) {
+        carritoDeCompras = JSON.parse(localStorage.getItem("carrito"));
+    }
+
+    let botonEliminar = document.getElementById(`eliminar${productoId}`);
+    botonEliminar.addEventListener('click', () => {
+        botonEliminar.parentElement.remove();
+        carritoDeCompras = carritoDeCompras.filter(el => el.id != productoId);
+        actualizarCarrito(carritoDeCompras);
+    });
+}
+
+
+
+
+// Array de productos en el localStorage
+let carritoStorage = [];
+
+// Logica de obtencion del localStorage
+document.addEventListener("DOMContentLoaded", () => {
+
+    
+
+    if (localStorage.getItem("carrito")) {
+        carritoStorage = JSON.parse(localStorage.getItem("carrito"));
+
+        // Map para recorrer los productos en el localStorage
+        carritoStorage.map((producto) => {
+            let div = document.createElement('div');
+            div.classList.add('productoEnCarrito');
+            div.innerHTML = ` <p>${producto.nombre}</p>
+                        <p>Precio:${producto.precio}</p>
+                        <p id=cantidad${producto.id}>Cantidad:${producto.cantidad}</p>
+                        <button id=eliminar${producto.id} class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                      `
+            contenedorCarrito.appendChild(div);
+
+            actualizarCarrito(carritoStorage);
+            eliminarProductoCarrito(producto.id);
+        })
+    }
+})
+
+

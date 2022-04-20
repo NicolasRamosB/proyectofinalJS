@@ -30,6 +30,8 @@ const mostrarProductos = (productos) => {
         boton.addEventListener('click', () => {
           carrito(producto.id);
         })
+
+        
         
     });
 };

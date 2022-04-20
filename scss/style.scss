@@ -157,7 +157,19 @@
     }
 }
 
+
 // INDEX PRODUCTOS
+div {
+    .container {
+        .nav-link {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 150%
+        }
+    }
+}
+
+
 .header__index {
     height: 20vh;
 
@@ -228,15 +240,15 @@ footer {
     opacity: 0;
     visibility: hidden;
     background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  .modal__active {
+}
+
+.modal__active {
     opacity: 1;
     visibility: visible;
     z-index: 5;
-  }
-  
-  .modal__carrito {
+}
+
+.modal__carrito {
     position: relative;
     background-color: white;
     min-width: 500px;
@@ -249,8 +261,9 @@ footer {
     h3 {
         color: rgb(225, 76, 65);
         padding-bottom: 5px;
-      }
-      #btn-cerrar-carrito {
+    }
+
+    #btn-cerrar-carrito {
         position: absolute;
         top: 15px;
         right: 15px;
@@ -258,24 +271,26 @@ footer {
         color: rgb(225, 76, 65) !important;
         border: none;
         background-color: white;
-      }
-      #btn-cerrar-carrito:hover {
+    }
+
+    #btn-cerrar-carrito:hover {
         cursor: pointer;
-      }
+    }
 
-      #btn-cerrar-carrito:focus {
+    #btn-cerrar-carrito:focus {
         outline: none;
-      }
-      .producto-precio {
-        padding-top: 10px;
-      }
+    }
 
-      .card .card-image .card-title {
+    .producto-precio {
+        padding-top: 10px;
+    }
+
+    .card .card-image .card-title {
         color: rgb(225, 76, 65);
         position: unset
-      }
+    }
 
-      .productoEnCarrito {
+    .productoEnCarrito {
         border-left: 5px solid lightblue;
         border-bottom-left-radius: 3px;
         border-top-left-radius: 3px;
@@ -283,32 +298,30 @@ footer {
         padding: 5px 10px;
         display: flex;
         justify-content: space-between;
-      }
-      
-      .productoEnCarrito:hover {
-        border-left: 5px solid rgb(225, 76, 65);
-      }
+    }
 
-      .boton-eliminar {
+    .productoEnCarrito:hover {
+        border-left: 5px solid rgb(225, 76, 65);
+    }
+
+    .boton-eliminar {
         background-color: white;
         color: red;
         border: none;
         font-size: 20px;
-      }
-      
-      .boton-eliminar:hover {
+    }
+
+    .boton-eliminar:hover {
         cursor: pointer;
-      }
-      
-      .boton-eliminar:focus {
+    }
+
+    .boton-eliminar:focus {
         outline: none;
-      }
-      
-      
-  }
-  
-  .modal__active .modal__carrito {
+    }
+
+
+}
+
+.modal__active .modal__carrito {
     margin-top: 0;
-  }
-  
-  
+}

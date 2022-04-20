@@ -111,6 +111,11 @@
     .contenedor__login-register form {
       position: relative; } }
 
+div .container .nav-link {
+  text-align: center;
+  color: black;
+  font-size: 150%; }
+
 .header__index {
   height: 20vh; }
   .header__index .header__title {
