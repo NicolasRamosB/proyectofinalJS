@@ -11,10 +11,10 @@ let carritoDeCompras = [];
 
 export const carrito = (productoId) => {
     // Llamo del localStorage los productos guardados 
-    if (localStorage.getItem("carrito")) {
-        carritoDeCompras = JSON.parse(localStorage.getItem("carrito"));
-    }
+    // Operador avanzado TERNEARIO
+    carritoDeCompras = localStorage.getItem("carrito") ? JSON.parse(localStorage.getItem("carrito")): [];
 
+    console.log(carritoDeCompras);
     let productoRepetido = carritoDeCompras.find(producto => producto.id == productoId);
     contarProductosRepetidos(productoRepetido, productoId);
     eliminarProductoCarrito(productoId);
@@ -58,6 +58,7 @@ const renderProductosCarrito = (productoId) => {
 // Repetidor de cantidad del producto en el modal.
 const contarProductosRepetidos = (prodRepetido, productoId) => {
     if (prodRepetido) {
+        // Operador avanzado ++
         prodRepetido.cantidad++
         document.getElementById(`cantidad${prodRepetido.id}`).innerHTML = `<p id=cantidad${prodRepetido.id}>Cantidad:${prodRepetido.cantidad}</p>`;
         actualizarCarrito(carritoDeCompras);
@@ -71,10 +72,10 @@ const contarProductosRepetidos = (prodRepetido, productoId) => {
 // logica y Evento de eliminar producto en el modal.
 const eliminarProductoCarrito = (productoId) => {
 
-    if (localStorage.getItem("carrito")) {
-        carritoDeCompras = JSON.parse(localStorage.getItem("carrito"));
-    }
-
+    // Operador avanzado AND
+    carritoDeCompras = localStorage.getItem("carrito") && JSON.parse(localStorage.getItem("carrito"));
+    
+    console.log(carritoDeCompras);
     let botonEliminar = document.getElementById(`eliminar${productoId}`);
     botonEliminar.addEventListener('click', () => {
         botonEliminar.parentElement.remove();
