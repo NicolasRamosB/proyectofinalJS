@@ -20,6 +20,6 @@ modalContenedor.addEventListener('click', () => {
 
 modalCarrito.addEventListener('click', (e) => {
     e.stopPropagation();
-    e.preventDefault();
+   
 })
 

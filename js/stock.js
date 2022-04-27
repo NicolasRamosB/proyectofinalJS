@@ -3,7 +3,7 @@ const productos = [
     {
         id: 1,
         nombre: "Remera 1",
-        tipo: "Remera",
+        tipo: "Remera celeste",
         info: "Remera celeste con estampa Wip & Free",
         precio: 1200,
         talle: ["L", "M", "S"],
@@ -14,7 +14,7 @@ const productos = [
     {
         id: 2,
         nombre: "Remera 2",
-        tipo: "remera",
+        tipo: "remera gris oscuro",
         info: "Remera gris oscuro Estampa montañas ",
         precio: 500,
         talle: ["L", "M", "S"],
@@ -25,7 +25,7 @@ const productos = [
     {
         id: 3,
         nombre: "Remera 3",
-        tipo: "Remera",
+        tipo: "Remera gris",
         info: "Remera Gris estampa montañas",
         precio: 900,
         talle: ["L", "M", "S"],
@@ -36,7 +36,7 @@ const productos = [
     {
         id: 4,
         nombre: "Remera 4",
-        tipo: "Remera",
+        tipo: "Remera gris claro",
         info: "Remera gris claro estampa Mon Tag One",
         precio: 1600,
         talle: ["L", "M", "S"],

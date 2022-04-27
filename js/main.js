@@ -2,6 +2,7 @@
 import { carrito } from "/js/carrito.js";
 import { productos } from "/js/stock.js";
 
+// Productos HTML.
 const mostrarProductos = (productos) => {
 
     const cards = document.getElementById("card-group");
@@ -26,9 +27,22 @@ const mostrarProductos = (productos) => {
                             </div> `
         cards.appendChild(div);
 
+        // BOTON AÑADIR AL CARRITO.
         const boton = document.getElementById(`boton${producto.id}`);
         boton.addEventListener('click', () => {
+
           carrito(producto.id);
+
+        // ALERT LIBRERIA TOASTIFY
+          Toastify({
+
+            text: `Haz agregado ${producto.nombre} al carrito`,
+            style: {
+                background: "rgba(140, 228, 82, 0.753)",
+              },
+            duration: 2000
+            
+            }).showToast();
         })
 
         
