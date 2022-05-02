@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -36,39 +37,37 @@
                     <p>Registrate para iniciar sesión</p>
                     <button id="btn__registrar">Registrar</button>
                 </div>
-            </div>
+            </div> -->
             <!-- Formulario de Login y Registro de usuario -->
             <div class="contenedor__login-register">
                 <!-- login -->
                 <form action="" class="formulario__login">
                     <p>Iniciar Sesión</p>
-                    <input type="email" placeholder="Correo Electronico" id="">
-                    <input type="password" placegolder="Contraseña" id="">
-                    <button>Iniciar Sesión</button>
+                    <input type="email" placeholder="Correo Electronico" id="emailSt">
+                    <input type="password" placegolder="Contraseña" id="passwordSt">
+                    <button id="iniciarSesionBt">Iniciar Sesión</button>
                 </form>
                 <!-- Registro -->
                 <form action="" class="formulario__register">
                     <p>Registrarse</p>
-                    <input type="email" placeholder="Nombre de Usuario" id="">
-                    <input type="email" placeholder="Corrreo Electronico" id="">
-                    <input type="password" placeholder="Contraseña" id="">
-                    <input type="password" placeholder="Confirmar Contraseña">
-                    <button>Registrarse</button>
+                    <input type="email" placeholder="Nombre de Usuario" id="email">
+                    <input type="email" placeholder="Corrreo Electronico" id="confirmEmail">
+                    <input type="password" placeholder="Contraseña" id="password">
+                    <button id="registrarseBt">Registrarse</button>
                 </form>
             </div>
 
-
         </section>
-
-        
-            
-        
 
     </main>
 
 
 
     <script src="/js/login.js" type="module"></script>
+    <script>
+        menúBásico()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
     <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
 </body>
 

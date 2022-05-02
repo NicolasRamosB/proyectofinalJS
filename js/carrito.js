@@ -1,5 +1,7 @@
 import { actualizarCarrito } from "/js/actualizarCarrito.js";
-import { productos } from "/js/stock.js";
+import { mostrarProductos } from "/js/main.js";
+import { productos } from "./stock.js";
+
 
 // Const del Id producto en el modal.
 const contenedorCarrito = document.getElementById('carrito__contenedor');
@@ -70,7 +72,7 @@ const contarProductosRepetidos = (prodRepetido, productoId) => {
 
 
 // logica y Evento de eliminar producto en el modal.
-const eliminarProductoCarrito = (productoId) => {
+const eliminarProductoCarrito = (productoId, productoNombre) => {
 
     // Operador avanzado AND
     carritoDeCompras = localStorage.getItem("carrito") && JSON.parse(localStorage.getItem("carrito"));
@@ -108,7 +110,7 @@ let carritoStorage = [];
 // Logica de obtencion del localStorage
 document.addEventListener("DOMContentLoaded", () => {
 
-    
+    mostrarProductos();
 
     if (localStorage.getItem("carrito")) {
         carritoStorage = JSON.parse(localStorage.getItem("carrito"));
@@ -125,9 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
             contenedorCarrito.appendChild(div);
 
             actualizarCarrito(carritoStorage);
-            eliminarProductoCarrito(producto.id);
+            eliminarProductoCarrito(producto.id, producto.nombre);
         })
     }
+    
 })
 
 

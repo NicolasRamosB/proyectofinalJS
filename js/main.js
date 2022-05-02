@@ -1,12 +1,13 @@
 
 import { carrito } from "/js/carrito.js";
-import { productos } from "/js/stock.js";
+
+import { getData } from "/js/getData.js";
 
 // Productos HTML.
-const mostrarProductos = (productos) => {
+export const mostrarProductos = async () => {
 
     const cards = document.getElementById("card-group");
-    
+    const productos = await getData();
     productos.forEach(producto => {
         
         const div = document.createElement('div');
@@ -52,7 +53,7 @@ const mostrarProductos = (productos) => {
 
 
 
-mostrarProductos(productos);
+
 
 
 
