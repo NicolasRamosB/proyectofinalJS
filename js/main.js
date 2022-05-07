@@ -1,21 +1,24 @@
 
-import { carrito } from "/js/carrito.js";
+// import { carrito } from "/js/carrito.js";
 
-import { getData } from "/js/getData.js";
+// import { getData } from "/js/getData.js";
 
 // Productos HTML.
-export const mostrarProductos = async () => {
+//  const mostrarProductos = async () => {
+let productos = [];
 
     const cards = document.getElementById("card-group");
-    const productos = await getData();
-    productos.forEach(producto => {
+    fetch("./stock.json")
+    .then(respuesta => respuesta.json())
+    .then(data => {
+
+      productos = data;
+
+      data.forEach(producto => {
         
         const div = document.createElement('div');
-        
         div.classList.add('card');
-        
         div.style.width = "100%";
-        
         div.innerHTML += `<div class="card-image ">
                                <img src=${producto.img}>
                                <span class="card-title text-center">${producto.nombre}</span>
@@ -31,9 +34,7 @@ export const mostrarProductos = async () => {
         // BOTON AÑADIR AL CARRITO.
         const boton = document.getElementById(`boton${producto.id}`);
         boton.addEventListener('click', () => {
-
           carrito(producto.id);
-
         // ALERT LIBRERIA TOASTIFY
           Toastify({
 
@@ -41,15 +42,16 @@ export const mostrarProductos = async () => {
             style: {
                 background: "rgba(140, 228, 82, 0.753)",
               },
-            duration: 2000
+            duration: 1500
             
             }).showToast();
         })
 
-        
-        
     });
-};
+      
+    })
+  
+// };
 
 
 

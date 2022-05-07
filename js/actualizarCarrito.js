@@ -3,7 +3,7 @@ const contadorCarrito = document.getElementById('contador-carrito');
 const precioTotal = document.getElementById('precioTotal');
 
 
-export const actualizarCarrito = (carritoDeCompras) => {
+ const actualizarCarrito = (carritoDeCompras) => {
 
   // Sumar Cantidad del modal
   contadorCarrito.innerText = carritoDeCompras.reduce((acc, el) => acc + el.cantidad, 0);
