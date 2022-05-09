@@ -4,17 +4,13 @@
 // import { getData } from "/js/getData.js";
 
 // Productos HTML.
-//  const mostrarProductos = async () => {
-let productos = [];
+
+const mostrarProductos = async () => {
 
     const cards = document.getElementById("card-group");
-    fetch("./stock.json")
-    .then(respuesta => respuesta.json())
-    .then(data => {
-
-      productos = data;
-
-      data.forEach(producto => {
+    const productos = await getData();
+    
+    productos.forEach(producto => {
         
         const div = document.createElement('div');
         div.classList.add('card');
@@ -49,9 +45,8 @@ let productos = [];
 
     });
       
-    })
-  
-// };
+}
+    
 
 
 

@@ -29,8 +29,9 @@ let carritoDeCompras = [];
 // Logica de Producto en el Modal
 const renderProductosCarrito = (productoId) => {
 
+    
     // Trae el producto del objeto lit de Productos.
-    let producto = productos.find(producto => producto.id == productoId);
+   let productos = productos.find(producto => producto.id == productoId);
     // Push al Array
     carritoDeCompras.push(producto);
     // Identificacion cantidad 1
@@ -39,6 +40,7 @@ const renderProductosCarrito = (productoId) => {
     let div = document.createElement('div');
   
     div.classList.add('productoEnCarrito');
+    
     
     div.innerHTML = `<p>${producto.nombre}</p>
         <p>Precio: ${producto.precio}</p>
@@ -110,6 +112,8 @@ let carritoStorage = [];
 
 // Logica de obtencion del localStorage
 document.addEventListener("DOMContentLoaded", () => {
+
+    mostrarProductos();
 
     if (localStorage.getItem("carrito")) {
         carritoStorage = JSON.parse(localStorage.getItem("carrito"));

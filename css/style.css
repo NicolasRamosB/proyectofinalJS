@@ -190,7 +190,8 @@ h3 {
 
 
 .comprar-active{
-  opacity: 1;
-  visibility: visible;
+  opacity: 0;
+  display:none;
   z-index: 5;
 }
+
