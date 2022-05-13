@@ -35,14 +35,37 @@ main {
 
 
 #card-group {
+  width: 100%;
   display: flex;
+  align-items:center;
 }
+
+.btn-floating{
+  display: inline;
+  font-size: 4vh;
+  cursor: pointer;
+  top: 80%;
+  left: 85%;
+  color: rgb(48, 183, 201);
+  position: absolute;
+}
+
 
 .card {
   margin: 20px;
-
+  
+}
+.card-image{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
+img{
+  width: 100%;
+}
 
 
 #cesta__carrito {
@@ -194,4 +217,5 @@ h3 {
   display:none;
   z-index: 5;
 }
+
 

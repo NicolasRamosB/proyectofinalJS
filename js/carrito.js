@@ -1,6 +1,3 @@
-// import { actualizarCarrito } from "/js/actualizarCarrito.js";
-// import { mostrarProductos } from "/js/main.js";
-// import { productos } from "./stock.js";
 
 
 // Const del Id producto en el modal.
@@ -9,47 +6,40 @@ const contenedorCarrito = document.getElementById('carrito__contenedor');
 let carritoDeCompras = [];
 
 
-
-
- const carrito = (productoId) => {
+const carrito = (producto) => {
     // Llamo del localStorage los productos guardados 
     // Operador avanzado TERNARIO
     carritoDeCompras = localStorage.getItem("carrito") ? JSON.parse(localStorage.getItem("carrito")) : [];
 
     console.log(carritoDeCompras);
-    let productoRepetido = carritoDeCompras.find(producto => producto.id == productoId);
-    contarProductosRepetidos(productoRepetido, productoId);
-    eliminarProductoCarrito(productoId);
+    console.log(producto);
+    let productoRepetido = carritoDeCompras.find(prod => prod.id === producto.id);
 
+    if (!productoRepetido) {
+        carritoDeCompras.push(producto);
+
+        localStorage.setItem('carrito', JSON.stringify(carritoDeCompras));
+        console.log(productoRepetido);
+    }
+
+    contarProductosRepetidos(productoRepetido, producto);
+    eliminarProductoCarrito(producto.id);
+    
 }
 
 
-
-
 // Logica de Producto en el Modal
-const renderProductosCarrito = (productoId) => {
+const renderProductosCarrito = (producto) => {
 
-    
-    // Trae el producto del objeto lit de Productos.
-   let productos = productos.find(producto => producto.id == productoId);
-    // Push al Array
-    carritoDeCompras.push(producto);
-    // Identificacion cantidad 1
     producto.cantidad = 1;
-
     let div = document.createElement('div');
-  
     div.classList.add('productoEnCarrito');
-    
-    
     div.innerHTML = `<p>${producto.nombre}</p>
         <p>Precio: ${producto.precio}</p>
         <p id="cantidad${producto.id}">Cantidad: ${producto.cantidad}</p>
         <button id="eliminar${producto.id}" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>`;
- 
+
     contenedorCarrito.appendChild(div);
-    
-  
 
     // Llamo la funcion contador del producto (Precio total) y localStorage setItem.
     actualizarCarrito(carritoDeCompras);
@@ -57,19 +47,17 @@ const renderProductosCarrito = (productoId) => {
 }
 
 
-
-
-
 // Repetidor de cantidad del producto en el modal.
-const contarProductosRepetidos = (prodRepetido, productoId) => {
+const contarProductosRepetidos = (prodRepetido, producto) => {
     if (prodRepetido) {
         // Operador avanzado ++
         prodRepetido.cantidad++
+        // console.log(prodRepetido);
         document.getElementById(`cantidad${prodRepetido.id}`)
             .innerHTML = `<p id=cantidad${prodRepetido.id}>Cantidad:${prodRepetido.cantidad}</p>`;
         actualizarCarrito(carritoDeCompras);
     } else {
-        renderProductosCarrito(productoId);
+        renderProductosCarrito(producto);
     }
 }
 
@@ -98,14 +86,10 @@ const eliminarProductoCarrito = (productoId, productoNombre) => {
                 carritoDeCompras = carritoDeCompras.filter(el => el.id != productoId);
                 actualizarCarrito(carritoDeCompras);
             }
-        })
-
+        });
 
     });
 }
-
-
-
 
 // Array de productos en el localStorage
 let carritoStorage = [];
@@ -128,8 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <button id=eliminar${producto.id} class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
                       `
             contenedorCarrito.appendChild(div);
-
-
 
 
             actualizarCarrito(carritoStorage);

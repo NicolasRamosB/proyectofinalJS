@@ -1,7 +1,4 @@
 
-// import { carrito } from "/js/carrito.js";
-
-// import { getData } from "/js/getData.js";
 
 // Productos HTML.
 
@@ -18,7 +15,7 @@ const mostrarProductos = async () => {
         div.innerHTML += `<div class="card-image ">
                                <img src=${producto.img}>
                                <span class="card-title text-center">${producto.nombre}</span>
-                               <a class="btn-floating halfway-fab wabes-effect waves-light" id=boton${producto.id}><i class="fa-solid fa-cart-plus">cart-plus</i></a>
+                               <a class="btn-floating halfway-fab wabes-effect waves-light" id=boton${producto.id}><i class="fa-solid fa-cart-plus"></i></a>
                             </div>
                             <div class="card-content">
                                 <p>${producto.info}</p>
@@ -30,7 +27,8 @@ const mostrarProductos = async () => {
         // BOTON AÑADIR AL CARRITO.
         const boton = document.getElementById(`boton${producto.id}`);
         boton.addEventListener('click', () => {
-          carrito(producto.id);
+        // let productos = productos.find(producto => producto.id == productoId);
+          carrito(productos[producto.id -1]);
         // ALERT LIBRERIA TOASTIFY
           Toastify({
 
