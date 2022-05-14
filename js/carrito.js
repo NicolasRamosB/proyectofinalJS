@@ -1,10 +1,9 @@
 
 
 // Const del Id producto en el modal.
-const contenedorCarrito = document.getElementById('carrito__contenedor');
+const contenedorCarrito = document.getElementById('vaciarCarrito');
 // Array de productos al evento click en sumar producto al carrito.
 let carritoDeCompras = [];
-
 
 const carrito = (producto) => {
     // Llamo del localStorage los productos guardados 
@@ -27,7 +26,6 @@ const carrito = (producto) => {
     
 }
 
-
 // Logica de Producto en el Modal
 const renderProductosCarrito = (producto) => {
 
@@ -45,80 +43,3 @@ const renderProductosCarrito = (producto) => {
     actualizarCarrito(carritoDeCompras);
 
 }
-
-
-// Repetidor de cantidad del producto en el modal.
-const contarProductosRepetidos = (prodRepetido, producto) => {
-    if (prodRepetido) {
-        // Operador avanzado ++
-        prodRepetido.cantidad++
-        // console.log(prodRepetido);
-        document.getElementById(`cantidad${prodRepetido.id}`)
-            .innerHTML = `<p id=cantidad${prodRepetido.id}>Cantidad:${prodRepetido.cantidad}</p>`;
-        actualizarCarrito(carritoDeCompras);
-    } else {
-        renderProductosCarrito(producto);
-    }
-}
-
-
-// logica y Evento de eliminar producto en el modal.
-const eliminarProductoCarrito = (productoId, productoNombre) => {
-
-    // Operador avanzado AND
-    carritoDeCompras = localStorage.getItem("carrito") && JSON.parse(localStorage.getItem("carrito"));
-
-    console.log(carritoDeCompras);
-    let botonEliminar = document.getElementById(`eliminar${productoId}`);
-    botonEliminar.addEventListener('click', () => {
-
-        // SWEET ALERT
-        Swal.fire({
-            title: '¿Desea eliminar el producto?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Eliminar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                botonEliminar.parentElement.remove();
-                carritoDeCompras = carritoDeCompras.filter(el => el.id != productoId);
-                actualizarCarrito(carritoDeCompras);
-            }
-        });
-
-    });
-}
-
-// Array de productos en el localStorage
-let carritoStorage = [];
-
-// Logica de obtencion del localStorage
-document.addEventListener("DOMContentLoaded", () => {
-
-    mostrarProductos();
-
-    if (localStorage.getItem("carrito")) {
-        carritoStorage = JSON.parse(localStorage.getItem("carrito"));
-
-        // Map para recorrer los productos en el localStorage
-        carritoStorage.map((producto) => {
-            let div = document.createElement('div');
-            div.classList.add('productoEnCarrito');
-            div.innerHTML = ` <p>${producto.nombre}</p>
-                        <p>Precio:${producto.precio}</p>
-                        <p id=cantidad${producto.id}>Cantidad:${producto.cantidad}</p>
-                        <button id=eliminar${producto.id} class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-                      `
-            contenedorCarrito.appendChild(div);
-
-
-            actualizarCarrito(carritoStorage);
-            eliminarProductoCarrito(producto.id, producto.nombre);
-        })
-    }
-})
-
-
-
