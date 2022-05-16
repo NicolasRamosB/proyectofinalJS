@@ -1,13 +1,18 @@
-function limpiarHTML (){
-    contenedorCarrito.innerHTML=""; 
-    while (contenedorCarrito.firstChild){
-      contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+
+
+// Funcion evento Boton "Vaciar Carrito"
+function limpiarHTML() {
+    contenedorCarrito.innerHTML = "";
+    while (contenedorCarrito.firstChild) {
+        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
     }
 }
+
 const btnVaciar = document.getElementById("btn-vaciar");
 const vaciarCarrito = () => {
     if (carritoDeCompras.length > 0) {
 
+        // limpia el carrito y el localStorage
         localStorage.clear();
         carritoDeCompras = [];
         contadorCarrito.innerHTML = 0;

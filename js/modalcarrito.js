@@ -1,9 +1,10 @@
+
+// Funcionalidad del boton Cesta y activacion del modal
+
 const modalContenedor = document.querySelector('.modal__contenedor');
 const abrirCarrito = document.getElementById('cesta__carrito');
 const cerrarCarrito = document.getElementById('btn-cerrar-carrito');
 const modalCarrito = document.querySelector('.modal__carrito');
-
-
 
 
 // Boton Carrito

@@ -1,3 +1,6 @@
+
+
+
 // Array de productos en el localStorage
 let carritoStorage = [];
 
@@ -9,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("carrito")) {
         carritoStorage = JSON.parse(localStorage.getItem("carrito"));
 
-        // Map para recorrer los productos en el localStorage
+        // Map para recorrer los productos en el carrito del localStorage
         carritoStorage.map((producto) => {
             let div = document.createElement('div');
             div.classList.add('productoEnCarrito');

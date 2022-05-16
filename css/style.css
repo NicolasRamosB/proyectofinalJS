@@ -115,7 +115,7 @@ footer {
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.3);
 }
-
+/* visibility: visibilidad del modal */
 .modal__active {
   opacity: 1;
   visibility: visible;
@@ -211,16 +211,14 @@ h3 {
   margin-top: 0;
 }
 
-
+/* display none visibilidad de comprar y pagar */
 .comprar-active{
   opacity: 0;
   display:none;
   z-index: 5;
 }
 
-.activeForm {
-  opacity: 0;
-  display:none;
-  z-index: 5;
+.opcionesPago .active {
+  display: none;
 }
 

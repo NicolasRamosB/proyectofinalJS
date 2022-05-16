@@ -5,6 +5,10 @@ const contenedorCarrito = document.getElementById('vaciarCarrito');
 // Array de productos al evento click en sumar producto al carrito.
 let carritoDeCompras = [];
 
+
+
+
+// Funcion del Carrito
 const carrito = (producto) => {
     // Llamo del localStorage los productos guardados 
     // Operador avanzado TERNARIO
@@ -23,7 +27,7 @@ const carrito = (producto) => {
 
     contarProductosRepetidos(productoRepetido, producto);
     eliminarProductoCarrito(producto.id);
-    
+
 }
 
 // Logica de Producto en el Modal
